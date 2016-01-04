@@ -1,0 +1,7 @@
+extends ../layout
+
+block content
+  h1= title
+    ul#slides.swiper-wrapper
+        each val in content
+         li #{val.name}
