@@ -2,6 +2,16 @@ extends ../layout
 
 block content
   h1= title
-    ul#slides.swiper-wrapper
-        each val in content
-         li #{val.name}
+  div.table-responsive
+    table.table
+        thead
+            tr
+                th ID
+                th UserName
+                th Email
+        tbody
+            each user in users
+                tr
+                    td #{user.id}
+                    td #{user.username}
+                    td #{user.email}
