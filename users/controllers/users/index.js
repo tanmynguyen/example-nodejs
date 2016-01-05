@@ -1,6 +1,6 @@
 var express = require('express');
+
 var router = express.Router();
-var bodyParser = require('body-parser');
 
  
 
@@ -9,7 +9,6 @@ var db_users = require('../../models/users/index');
 var define = require("node-constants")(exports);
 
 
-router.use(bodyParser.json());
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -44,7 +43,7 @@ router.post('/', function(req, res, next){
 //    res.setHeader("Content-Type", "application/json");
 //    req.body.user,md5(req.body.password),req.body.email
     var user = {
-        username : req.body.user,
+        username : req.body.username,
         password : req.body.password,
         email : req.body.email
     };
