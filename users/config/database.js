@@ -3,6 +3,7 @@ var mysql = require('mysql');
 var mysqlConnectString = {
     connectOptions : {
         development : {
+            connectionLimit : 100,
             host     : '172.30.1.29',
             user     : 'dev_test',
             password : '123456',
@@ -52,15 +53,19 @@ var mysqlConnection = {
     },
     
     //createPool
-    getPool : function (query, callback) {
-        var createPool = mysql.createPool(mysqlConnectString.connectOptions.production);
-        
-        createPool.getConnection(function(err, connection){
-            connection.query(query, function(err, rows){
-            });
-        });
-        
+    getPool : function () {
+        var createPool = mysql.createPool(mysqlConnectString.connectOptions.development);
+        console.log('Open connect successfull!!!');
+        return createPool;
     },
+    
+    closePool : function () {
+        var createPool = mysql.createPool(mysqlConnectString.connectOptions.development);
+        createPool.end(function (err){
+            if (err) { throw err }
+            console.log('Close connect successfull!!!');
+        });
+    }
     
 }
 

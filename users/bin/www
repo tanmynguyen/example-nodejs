@@ -8,13 +8,6 @@ var app = require('../app');
 var debug = require('debug')('users:server');
 var http = require('http');
 
-var define = require("node-constants")(exports);
-
-define({
-    DAYS_IN_WEEK: 7,
-    SECONDS_IN_MINUTE: 60
-});
-
 
 /**
  * Get port from environment and store in Express.

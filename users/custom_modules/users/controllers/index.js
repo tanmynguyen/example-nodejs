@@ -2,9 +2,8 @@ var express = require('express');
 
 var router = express.Router();
 
- 
 
-var db_users = require('../../models/users/index');
+var db_users = require('../models/index');
 
 var define = require("node-constants")(exports);
 
