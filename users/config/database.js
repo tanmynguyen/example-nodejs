@@ -4,9 +4,9 @@ var mysqlConnectString = {
     connectOptions : {
         development : {
             connectionLimit : 100,
-            host     : '172.30.1.29',
-            user     : 'dev_test',
-            password : '123456',
+            host     : '202.43.110.118',
+            user     : 'dev2',
+            password : '',
             database : 'test_balance',
             multipleStatements: true,
         },

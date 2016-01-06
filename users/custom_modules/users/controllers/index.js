@@ -39,13 +39,18 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next){
-//    res.setHeader("Content-Type", "application/json");
+    res.setHeader("Content-Type", "application/json");
 //    req.body.user,md5(req.body.password),req.body.email
     var user = {
-        username : req.body.username,
-        password : req.body.password,
-        email : req.body.email
+        username : 'test',
+        password : '123456',
+        email : 'admin@admin.com'
     };
+//    var user = {
+//        username : req.body.username,
+//        password : req.body.password,
+//        email : req.body.email
+//    };
     db_users.Model_Users.addUsers(user, function(users){
         res.json({'Message' : users})
     });

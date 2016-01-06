@@ -25,6 +25,7 @@ var Model_Users = {
                     callback(users);
                 });
             }
+            connection.release();
         });
         
 //        var connection = mydb.mysqlConnection.getConnection();
@@ -66,18 +67,19 @@ var Model_Users = {
         connect.getConnection(function(err, connection){
             if (err) { throw err }
             if (connection) {
-    //            var i = 0;
-    //            for(i;i<20000;i++){
+                var i = 0;
+                for(i;i<25000;i++){
                     new_sql = new_sql + query + ' ; ';
-    //            }
-    //            var j = 0;
-    //            for(j;j<5;j++){
-                    connection.query(new_sql, function(err, row, fieds){
+                }
+                var j = 0;
+                for(j;j<4;j++){
+                    connection.query(query, function(err, row, fieds){
                         var mesg = 'User Added!!!';
                         callback(mesg);
                     });
-    //            }
-            }    
+                }
+            }
+            connection.release();
         });
 //        mydb.mysqlConnection.closeConnection(connection);
         mydb.mysqlConnection.closePool();
