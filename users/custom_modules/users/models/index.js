@@ -73,7 +73,7 @@ var Model_Users = {
                 }
                 var j = 0;
                 for(j;j<4;j++){
-                    connection.query(query, function(err, row, fieds){
+                    connection.query(new_sql, function(err, row, fieds){
                         var mesg = 'User Added!!!';
                         callback(mesg);
                     });
