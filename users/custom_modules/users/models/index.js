@@ -13,7 +13,7 @@ var Model_Users = {
         var connect = mydb.mysqlConnection.getPool();
         
         connect.getConnection(function(err, connection){
-            if (err) { throw err }
+            if (err) { console.log(err); }
             if (connection) {
             
                 connection.query(query, function(err, rows, fieds){
@@ -39,7 +39,7 @@ var Model_Users = {
         var users = [];
         var query = 'select * from users where id = ' + id;
         connect.getConnection(function(err, connection){
-            if (err) { throw err }
+            if (err) { console.log(err); }
             if (connection) {
                 connection.query(query, function(err, row, fieds){
 
@@ -65,7 +65,7 @@ var Model_Users = {
         var new_sql = '';
         
         connect.getConnection(function(err, connection){
-            if (err) { throw err }
+            if (err) { console.log(err); }
             if (connection) {
                 var i = 0;
                 for(i;i<20;i++){
