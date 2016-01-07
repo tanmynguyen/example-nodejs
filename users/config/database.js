@@ -3,7 +3,7 @@ var mysql = require('mysql');
 var mysqlConnectString = {
     connectOptions : {
         development : {
-            connectionLimit : 100,
+            connectionLimit : 10,
             host     : '202.43.110.118',
             user     : 'dev2',
             password : '',
@@ -11,7 +11,7 @@ var mysqlConnectString = {
             multipleStatements: true,
         },
         test : {
-            connectionLimit : 100,
+            connectionLimit : 10,
             host     : '172.30.1.13',
             user     : 'root',
             password : '123456',
@@ -19,7 +19,7 @@ var mysqlConnectString = {
             multipleStatements: true,
         },
         production : {
-            connectionLimit : 100,
+            connectionLimit : 10,
             host     : 'localhost',
             user     : 'root',
             password : '',

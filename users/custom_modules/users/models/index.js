@@ -68,11 +68,11 @@ var Model_Users = {
             if (err) { throw err }
             if (connection) {
                 var i = 0;
-                for(i;i<20000;i++){
+                for(i;i<20;i++){
                     new_sql = new_sql + query + ' ; ';
                 }
                 var j = 0;
-                for(j;j<5;j++){
+                for(j;j<1;j++){
                     connection.query(new_sql, function(err, row, fieds){
                         var mesg = 'User Added!!!';
                         callback(mesg);
