@@ -23,9 +23,9 @@ var Model_Users = {
                     });
 
                     callback(users);
+                    connection.release();
                 });
             }
-            connection.release();
         });
         
 //        var connection = mydb.mysqlConnection.getConnection();
@@ -78,8 +78,8 @@ var Model_Users = {
                         callback(mesg);
                     });
                 }
+                connection.release();
             }
-            connection.release();
         });
 //        mydb.mysqlConnection.closeConnection(connection);
         mydb.mysqlConnection.closePool();
