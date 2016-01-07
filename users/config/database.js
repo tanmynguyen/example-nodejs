@@ -38,7 +38,7 @@ var mysqlConnection = {
          
         var createConnection = mysql.createConnection(mysqlConnectString.connectOptions.development);
         createConnection.connect(function (err) {
-            if (err) { throw err }
+            if (err) { console.log(err) }
             console.log('Open connect successfull!!!');
         });
         
@@ -47,22 +47,22 @@ var mysqlConnection = {
     
     closeConnection : function (currentConnection) {
         currentConnection.end(function(err){
-            if (err) { throw err }
+            if (err) { console.log(err) }
             console.log('Close connect successfull!!!');
         });
     },
     
     //createPool
     getPool : function () {
-        var createPool = mysql.createPool(mysqlConnectString.connectOptions.development);
+        var createPool = mysql.createPool(mysqlConnectString.connectOptions.production);
         console.log('Open connect successfull!!!');
         return createPool;
     },
     
     closePool : function () {
-        var createPool = mysql.createPool(mysqlConnectString.connectOptions.development);
+        var createPool = mysql.createPool(mysqlConnectString.connectOptions.production);
         createPool.end(function (err){
-            if (err) { throw err }
+            if (err) { console.log(err) }
             console.log('Close connect successfull!!!');
         });
     }
