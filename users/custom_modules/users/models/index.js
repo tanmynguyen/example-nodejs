@@ -13,6 +13,7 @@ var Model_Users = {
         var connect = mydb.mysqlConnection.getPool();
         
         connect.getConnection(function(err, connection){
+            connection.release();
             if (err) {
                 console.log(err);
             }
@@ -26,7 +27,7 @@ var Model_Users = {
 
                     callback(users);
                     
-                    //https://github.com/felixge/node-mysql/issues/712
+                    //https://github.com/felixge/node-mysql/issues/712 <-- issue 'too many connection'
 //                    connection.release();
                     
                 });
