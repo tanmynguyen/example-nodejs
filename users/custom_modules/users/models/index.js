@@ -13,12 +13,12 @@ var Model_Users = {
         var connect = mydb.mysqlConnection.getPool();
         
         connect.getConnection(function(err, connection){
-            connection.release();
+            
             if (err) {
                 console.log(err);
             }
             if (connection) {
-            
+                connection.release(); //<-- fixed issue
                 connection.query(query, function(err, rows, fieds){
 
                     rows.forEach(function (row){
