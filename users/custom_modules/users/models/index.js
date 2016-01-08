@@ -19,8 +19,8 @@ var Model_Users = {
             }
             if (connection) {
                 connection.query(query, function(err, rows, fieds){
-                    if (err) { console.log(err); }
                     connection.release(); //<-- fixed issue
+                    if (err) { console.log(err); }
 
                     rows.forEach(function (row){
                        users.push(row); 

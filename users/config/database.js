@@ -3,7 +3,7 @@ var mysql = require('mysql');
 var mysqlConnectString = {
     connectOptions : {
         development : {
-            connectionLimit : 100,
+//            connectionLimit : 100,
             host     : '202.43.110.118',
             user     : 'dev2',
             password : '',
