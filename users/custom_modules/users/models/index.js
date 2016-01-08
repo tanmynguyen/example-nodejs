@@ -16,6 +16,7 @@ var Model_Users = {
             
             if (err) {
                 console.log(err);
+                callback(err);
             }
             if (connection) {
                 connection.query(query, function(err, rows, fieds){
