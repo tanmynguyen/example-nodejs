@@ -8,19 +8,22 @@ var Model_Users = {
     getAllUsers : function (callback) {
         
         var users = [];
-        var query = 'select * from users';
+        var query = 'select * from ??';
+        var table = ['users'];
+        query = mysql.format(query, table);
         
-        var connect = mydb.mysqlConnection.getPool();
+//        var connect = mydb.mysqlConnection.getPool();
+        var connection = mydb.mysqlConnection.getConnection();
         
-        connect.getConnection(function(err, connection){
+//        connect.getConnection(function(err, connection){
             
-            if (err) {
-                console.log(err);
-                callback(err);
-            }
+//            if (err) {
+//                console.log(err);
+//                callback(err);
+//            }
             if (connection) {
                 connection.query(query, function(err, rows, fieds){
-                    connection.release(); //<-- fixed issue
+//                    connection.release(); //<-- fixed issue
                     if (err) { console.log(err); }
 
                     rows.forEach(function (row){
@@ -34,11 +37,11 @@ var Model_Users = {
                     
                 });
             }
-        });
+//        });
         
-//        var connection = mydb.mysqlConnection.getConnection();
+        var connection = mydb.mysqlConnection.closeConnection(connection);
 //        
-        mydb.mysqlConnection.closePool();
+//        mydb.mysqlConnection.closePool();
     },
     getUsersById : function (id, callback) {
 //        var connection = mydb.mysqlConnection.getConnection();
