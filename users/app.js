@@ -1,4 +1,4 @@
-var FileStreamRotator = require('file-stream-rotator')
+//var FileStreamRotator = require('file-stream-rotator')
 var express = require('express');
 var path = require('path');
 var fs = require('fs');
@@ -20,10 +20,10 @@ var app = express();
 
 //logger
 
-var logDirectory = __dirname + '/logs';
+//var logDirectory = __dirname + '/logs';
 
 // create a rotating write stream
-var accessLogStream = fs.createWriteStream(logDirectory + '/access.log', {flags: 'a'})
+//var accessLogStream = fs.createWriteStream(logDirectory + '/access.log', {flags: 'a'})
 //var accessLogStream = FileStreamRotator.getStream({
 //  filename: logDirectory + '/access-%DATE%.log',
 //  frequency: 'daily',
