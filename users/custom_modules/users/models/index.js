@@ -68,8 +68,8 @@ var Model_Users = {
         mydb.mysqlConnection.closePool();
     },
     addUsers : function (user, callback) {
-//        var connection = mydb.mysqlConnection.getConnection();
-        var connect = mydb.mysqlConnection.getPool();
+        var connection = mydb.mysqlConnection.getConnection();
+//        var connect = mydb.mysqlConnection.getPool();
         var users = [];
         var query = "INSERT INTO ??(??,??,??) VALUES (?,?,?)";
         var table = ["users","username","password","email", user.username, md5(user.password), user.email];
@@ -78,28 +78,28 @@ var Model_Users = {
         
         var new_sql = '';
         
-        connect.getConnection(function(err, connection){
-            if (err) {
-                console.log(err);
-                callback(err);
-            }
-            if (connection) {
-                var i = 0;
-                for(i;i<20;i++){
-                    new_sql = new_sql + query + ' ; ';
-                }
-                var j = 0;
-                for(j;j<1;j++){
-                    connection.query(new_sql, function(err, row, fieds){
+//        connect.getConnection(function(err, connection){
+//            if (err) {
+//                console.log(err);
+//                callback(err);
+//            }
+//            if (connection) {
+//                var i = 0;
+//                for(i;i<20;i++){
+//                    new_sql = new_sql + query + ' ; ';
+//                }
+//                var j = 0;
+//                for(j;j<1;j++){
+                    connection.query(query, function(err, row, fieds){
                         var mesg = 'User Added!!!';
                         callback(mesg);
                     });
-                }
-                connection.release();
-            }
-        });
-//        mydb.mysqlConnection.closeConnection(connection);
-        mydb.mysqlConnection.closePool();
+//                }
+//                connection.release();
+//            }
+//        });
+        mydb.mysqlConnection.closeConnection(connection);
+//        mydb.mysqlConnection.closePool();
     },
     
 };
