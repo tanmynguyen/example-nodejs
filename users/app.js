@@ -1,7 +1,7 @@
 //var FileStreamRotator = require('file-stream-rotator')
 var express = require('express');
 var Memcached = require('memcached');
-var memcached = new Memcached('202.43.110.120:11211');
+var memcached = new Memcached();
 var lifetime = 86400; //24hrs
 var path = require('path');
 var fs = require('fs');
@@ -13,7 +13,6 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./custom_modules/users/index');
-
 
 //logger.token('id', function getId(req) {
 //  return req.id
@@ -57,8 +56,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public'))); // include dir public
 
+
 app.use('/', index);
 app.use('/users', users);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -90,13 +92,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
-memcached.get("users", function( err, result ){
-	if( err ) console.error( err );
-	
-	console.dir( result );
-	memcached.end(); // as we are 100% certain we are not going to use the connection again, we are going to end it
-});
-
 
 module.exports = app;

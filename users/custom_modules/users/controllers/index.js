@@ -7,9 +7,6 @@ var db_users = require('../models/index');
 
 var define = require("node-constants")(exports);
 
-var Memcached = require('memcached');
-
-
 //memcached.get('/', function (err, data) {
 //    db_users.Model_Users.getAllUsers(function(user){
 //        res.json({"Message" : "Success", "Users" : user});
@@ -18,6 +15,7 @@ var Memcached = require('memcached');
 //});
 
 /* GET users listing. */
+
 router.get('/', function(req, res, next) {
     db_users.Model_Users.getAllUsers(function(user){
         res.json({"Message" : "Success", "Users" : user});

@@ -1,5 +1,8 @@
 var mysql = require('mysql');
 
+var Memcached = require('memcached');
+var memcached = new Memcached();
+
 var mysqlConnectString = {
     connectOptions : {
         development : {
@@ -31,6 +34,14 @@ var mysqlConnectString = {
 
 
 var mysqlConnection = {
+    
+    getMemcachedConnection : function() {
+        memcached.connect('202.43.110.120:11211', function(err, conn){
+            if( err ) {
+                 console.log( conn.server );
+              }
+        });    
+    },
     
     //createConnection
     
@@ -70,3 +81,4 @@ var mysqlConnection = {
 }
 
 exports.mysqlConnection = mysqlConnection;
+exports.memcached = memcached;

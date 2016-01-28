@@ -12,6 +12,8 @@ var Model_Users = {
         var table = ['users'];
         query = mysql.format(query, table);
         
+        mydb.mysqlConnection.getMemcachedConnection();
+        
 //        var connect = mydb.mysqlConnection.getPool();
         var connection = mydb.mysqlConnection.getConnection();
         
@@ -30,7 +32,14 @@ var Model_Users = {
                        users.push(row); 
                     });
 
-                    callback(users);
+                    
+                    mydb.memcached.set('user', users, 10000, function(err){
+                        if(err) throw new err;
+                    });
+//
+                    mydb.memcached.get('user', function(err, data){
+                        callback(data);
+                    });
                     
                     //https://github.com/felixge/node-mysql/issues/712 <-- issue 'too many connection'
 //                    connection.release();
