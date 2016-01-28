@@ -1,7 +1,7 @@
 //var FileStreamRotator = require('file-stream-rotator')
 var express = require('express');
 var Memcached = require('memcached');
-var memcached = new Memcached('localhost:11211');
+var memcached = new Memcached('202.43.110.120:11211');
 var lifetime = 86400; //24hrs
 var path = require('path');
 var fs = require('fs');
@@ -91,7 +91,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-memcached.get( "users", function( err, result ){
+memcached.get("users", function( err, result ){
 	if( err ) console.error( err );
 	
 	console.dir( result );
