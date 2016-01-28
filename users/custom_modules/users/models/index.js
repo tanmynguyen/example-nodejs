@@ -41,7 +41,7 @@ var Model_Users = {
 //                        callback(data);
 //                    });
                     
-                     callback(data);
+                     callback(users);
                     
                     //https://github.com/felixge/node-mysql/issues/712 <-- issue 'too many connection'
 //                    connection.release();
