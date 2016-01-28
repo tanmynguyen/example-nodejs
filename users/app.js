@@ -1,5 +1,8 @@
 //var FileStreamRotator = require('file-stream-rotator')
 var express = require('express');
+var Memcached = require('memcached');
+var memcached = new Memcached('localhost:11211');
+var lifetime = 86400; //24hrs
 var path = require('path');
 var fs = require('fs');
 var favicon = require('serve-favicon');
@@ -86,6 +89,13 @@ app.use(function(err, req, res, next) {
     message: err.message,
     error: {}
   });
+});
+
+memcached.get( "users", function( err, result ){
+	if( err ) console.error( err );
+	
+	console.dir( result );
+	memcached.end(); // as we are 100% certain we are not going to use the connection again, we are going to end it
 });
 
 
