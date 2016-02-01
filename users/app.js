@@ -13,6 +13,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./custom_modules/users/index');
+var memcache = require('./custom_modules/memcache/index');
 
 //logger.token('id', function getId(req) {
 //  return req.id
@@ -59,6 +60,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // include dir public
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/memcache', users);
 
 
 

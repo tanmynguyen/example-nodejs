@@ -37,6 +37,7 @@ var mysqlConnection = {
     
     getMemcachedConnection : function() {
         memcached.connect('202.43.110.120:11211', function(err, conn){
+//        memcached.connect('127.0.0.1:11211', function(err, conn){
             if( err ) {
                  console.log( conn.server );
               }
